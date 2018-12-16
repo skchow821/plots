@@ -1,5 +1,6 @@
 import sys
 import argparse
+import logging
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='What am I?')
@@ -9,9 +10,13 @@ def parse_arguments():
     parser.add_argument('--create_list', dest='create_list', nargs=3, metavar='list_item')
     return parser.parse_args()
 
+def setup_logging():
+    logging.basicConfig(level=logging.DEBUG, format="%(asctime)s, %(module)s, %(funcName)s, %(message)s")
+
 def main():
+    setup_logging()
+    logging.debug('Debug Log')
     args = parse_arguments()
-    print("Hello sunny")
 
 if __name__ == '__main__':
     main()
